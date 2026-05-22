@@ -11,7 +11,6 @@
     
     <style>
         :root {
-            /* Paleta Institucional UPDS */
             --primary: #1f3189;     
             --secondary: #18419b;   
             --accent: #249cdd;      
@@ -31,17 +30,16 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- CABECERA (HEADER) MEJORADA --- */
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 50px 20px 80px 20px; /* Más espacio abajo para montar el buscador */
+            padding: 50px 20px 80px 20px;
             text-align: center;
             color: var(--white);
             position: relative;
         }
 
         .header img {
-            height: 120px; /* LOGO MUCHO MÁS GRANDE */
+            height: 120px;
             width: auto;
             background: var(--white);
             padding: 15px 30px;
@@ -66,10 +64,9 @@
             opacity: 0.85;
         }
 
-        /* --- BUSCADOR FLOTANTE --- */
         .search-container {
             max-width: 700px;
-            margin: -35px auto 40px auto; /* Montado sobre el header */
+            margin: -35px auto 40px auto;
             padding: 0 20px;
             position: relative;
             z-index: 10;
@@ -104,7 +101,6 @@
             font-size: 20px;
         }
 
-        /* --- CONTENEDOR DE TARJETAS --- */
         .grid-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -114,11 +110,10 @@
             gap: 25px;
         }
 
-        /* --- DISEÑO DE TARJETA (NUEVA JERARQUÍA) --- */
         .card {
             background: var(--white);
             border-radius: 16px;
-            padding: 30px; /* Más aire y elegancia */
+            padding: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             border: 1px solid var(--border-color);
             border-top: 5px solid var(--accent);
@@ -132,7 +127,22 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
 
-        /* 1. EL NOMBRE ES LO PRINCIPAL */
+        /* Contenedor nuevo para el Logotipo */
+        .card-logo {
+            height: 60px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            order: 0;
+        }
+
+        .card-logo img {
+            max-height: 100%;
+            max-width: 180px;
+            object-fit: contain;
+        }
+
         .card-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 20px;
@@ -140,10 +150,9 @@
             color: var(--primary);
             margin: 0 0 10px 0;
             line-height: 1.3;
-            order: 1; /* Forzamos a que esté arriba */
+            order: 1;
         }
 
-        /* 2. LA CATEGORÍA VA DESPUÉS (Sutil) */
         .card-category {
             font-size: 11px;
             font-weight: 700;
@@ -158,7 +167,6 @@
             order: 2;
         }
 
-        /* 3. EL BENEFICIO */
         .card-content-wrapper {
             order: 3;
             flex-grow: 1;
@@ -186,7 +194,6 @@
             text-decoration: underline;
         }
 
-        /* 4. EL FOOTER (FECHA) */
         .card-footer {
             order: 4;
             margin-top: 25px;
@@ -224,7 +231,7 @@
 
     <header class="header">
         <img src="https://i.imgur.com/K98aGUI.png" alt="Logo UPDS">
-        <h1>Directorio de Convenios</h1>
+        <h1>Directorio de Convenios Institucionales</h1>
         <p>Beneficios exclusivos para la comunidad UPDS Sede Cochabamba</p>
     </header>
 
@@ -234,216 +241,325 @@
     </div>
 
     <div class="grid-container" id="conveniosContainer">
-        </div>
+    </div>
 
     <script>
         // ==========================================
-        // BASE DE DATOS JSON INCRUSTADA
+        // BASE DE DATOS JSON INCRUSTADA (Actualizada 2026 - Solo Vigentes)
         // ==========================================
         const convenios = [
             {
-                "empresa": "Federación Sindical de Trabajadores Petroleros de Bolivia",
-                "categoria": "Becas",
-                "beneficio": "Se acuerda implementar un sistema de beneficios para los afiliados a la Federación o sus hijos, de tal manera que tengan acceso a la formación académica profesional.",
-                "fecha": "28/02/2028"
+                "empresa": "ARTS COLLECTIVE JLA S.A.S.",
+                "categoria": "Cooperación (Específico Investigación)",
+                "beneficio": "Cooperación institucional en el área de investigación y desarrollo.",
+                "fecha": "25/01/2029",
+                "logo": "LOGOS DE LA EMPRESAS/ARTS COLLECTIVE JLA S.A.S..png"
             },
             {
-                "empresa": "AEISEC en Bolivia",
-                "categoria": "Prácticas Profesionales y Cooperación",
-                "beneficio": "Prácticas profesionales internacionales. Actividades de Responsabilidad Social Universitaria y académicas.",
-                "fecha": "26/01/2031"
+                "empresa": "EMPRESA DE TELECOMUNICACIONES NUEVATEL PCS DE BOLIVIA S.A.",
+                "categoria": "Marco Cooperación (Nacional)",
+                "beneficio": "Cooperación interinstitucional a nivel nacional en telecomunicaciones e innovación.",
+                "fecha": "Indefinido",
+                "logo": "LOGOS DE LA EMPRESAS/VIVA.png"
             },
             {
-                "empresa": "Ministerio Público - Fiscalía General del Estado",
+                "empresa": "WORLD VISION",
+                "categoria": "Marco Cooperación (Nacional)",
+                "beneficio": "Acuerdo de cooperación nacional para el desarrollo de proyectos conjuntos.",
+                "fecha": "28/05/2029",
+                "logo": "LOGOS DE LA EMPRESAS/WORLD VISION.png"
+            },
+            {
+                "empresa": "WOWCOM",
+                "categoria": "Cooperación (Específico Prácticas profesionales)",
+                "beneficio": "Espacios destinados para la realización de prácticas profesionales.",
+                "fecha": "02/06/2026",
+                "logo": "LOGOS DE LA EMPRESAS/WOWCOM.png"
+            },
+            {
+                "empresa": "CÁMARA DE INDUSTRIA, COMERCIO Y SERVICIOS DE COCHABAMBA - ICAM",
+                "categoria": "Prácticas Profesionales y Actualización",
+                "beneficio": "Realización de Prácticas Profesionales. Descuentos institucionales del 20% en cursos de actualización, diplomados, especializaciones y carreras para trabajadores de ICAM.",
+                "fecha": "05/06/2026",
+                "logo": "LOGOS DE LA EMPRESAS/CÁMARA DE INDUSTRIA, COMERCIO Y SERVICIOS DE COCHABAMBA - ICAM.png"
+            },
+            {
+                "empresa": "CLÍNICA COPACABANA S.R.L.",
+                "categoria": "Prácticas y Salud",
+                "beneficio": "Prácticas Profesionales para las facultades de Cs. Empresariales, Cs. de la Salud y Cs. Jurídicas. Disposición de profesionales para talleres. Descuentos del 20% para trabajadores de la Clínica en oferta académica UPDS.",
+                "fecha": "10/07/2026",
+                "logo": "LOGOS DE LA EMPRESAS/CLÍNICA COPACABANA S.R.L..png"
+            },
+            {
+                "empresa": "COLEGIO DEPARTAMENTAL DE ECONOMISTAS COCHABAMBA",
+                "categoria": "Prácticas Profesionales y Beneficios",
+                "beneficio": "Descuento del 20% en cursos de actualización y realización de Prácticas Profesionales. Disposición mutua de espacios académicos y publicación de papers en revistas indexadas.",
+                "fecha": "14/07/2026",
+                "logo": "LOGOS DE LA EMPRESAS/COLEGIO DEPARTAMENTAL DE ECONOMISTAS COCHABAMBA.jpg"
+            },
+            {
+                "empresa": "CENTRO INTEGRAL EQUIVID",
+                "categoria": "Salud y Prácticas",
+                "beneficio": "Prácticas Profesionales para Cs. Empresariales y de la Salud. Descuento del 20% en oferta académica UPDS para trabajadores de EQUIVID.",
+                "fecha": "21/07/2026",
+                "logo": "LOGOS DE LA EMPRESAS/EQUIVID.jpg"
+            },
+            {
+                "empresa": "SKY BOX",
+                "categoria": "Marco Cooperación y Alianza Estratégica",
+                "beneficio": "Alianza estratégica y cooperación para el desarrollo de actividades interinstitucionales.",
+                "fecha": "23/07/2026",
+                "logo": "LOGOS DE LA EMPRESAS/SKY BOX.jpg"
+            },
+            {
+                "empresa": "CÁMARA DEL LIBRO DE COCHABAMBA",
+                "categoria": "Cultura, Prácticas y Actualización",
+                "beneficio": "Descuento del 100% en Cursos de actualización en la FILC. Beca del 100% al ganador de Formando Escritores y 20% de descuento en oferta UPDS para trabajadores.",
+                "fecha": "23/07/2026",
+                "logo": "LOGOS DE LA EMPRESAS/CÁMARA DEL LIBRO DE COCHABAMBA.jpg"
+            },
+            {
+                "empresa": "COLEGIO DEPARTAMENTAL DE ABOGADOS DE COCHABAMBA",
+                "categoria": "Prácticas Profesionales y Beneficios",
+                "beneficio": "Descuento del 20% en Cursos de actualización y 50% en espacios. Prácticas profesionales garantizadas.",
+                "fecha": "05/08/2026",
+                "logo": "LOGOS DE LA EMPRESAS/COLEGIO DEPARTAMENTAL DE ABOGADOS DE COCHABAMBA.jpg"
+            },
+            {
+                "empresa": "LABORATORIO CLÍNICO PARACELSUS",
+                "categoria": "Salud y Prácticas Profesionales",
+                "beneficio": "Descuento del 25% en análisis clínicos. Prácticas profesionales para Cs. de la Salud y empresariales.",
+                "fecha": "02/10/2026",
+                "logo": "LOGOS DE LA EMPRESAS/LABORATORIO CLÍNICO PARACELSUS.jpg"
+            },
+            {
+                "empresa": "MAYOREO Y DISTRIBUCIÓN S.A. (MADISA)",
+                "categoria": "Beneficios y Prácticas",
+                "beneficio": "20% de descuento en actualización especializada MADISA y Prácticas Profesionales. Beca 100% al ganador de Formando Escritores por parte de UPDS.",
+                "fecha": "12/10/2026",
+                "logo": "LOGOS DE LA EMPRESAS/MAYOREO Y DISTRIBUCIÓN S.A. (MADISA).jpg"
+            },
+            {
+                "empresa": "ASOCIACIÓN CULTURAL EDUCATIVA ALIANZA FRANCESA DE COCHABAMBA",
+                "categoria": "Idiomas y Prácticas Profesionales",
+                "beneficio": "Descuento inicial del 15% en clases de francés y prácticas profesionales. Beneficios cruzados en capacitación del 20% en UPDS.",
+                "fecha": "17/10/2026",
+                "logo": "LOGOS DE LA EMPRESAS/ASOCIACIÓN CULTURAL EDUCATIVA ALIANZA FRANCESA DE COCHABAMBA.png"
+            },
+            {
+                "empresa": "CHASKY MARKETING Y DISEÑO",
+                "categoria": "Prácticas Profesionales y Descuentos",
+                "beneficio": "20% de descuento en actualización y realización de prácticas profesionales. Espacios compartidos de coordinación.",
+                "fecha": "08/11/2026",
+                "logo": "LOGOS DE LA EMPRESAS/CHASKY MARKETING Y DISEÑO.jpg"
+            },
+            {
+                "empresa": "COOPERATIVA DE AHORRO Y CRÉDITO ABIERTA SAN JOSÉ DE PUNATA SRL",
                 "categoria": "Prácticas Profesionales",
-                "beneficio": "Convenio de prácticas profesionales y ejecución de actividades académicas.",
-                "fecha": "05/12/2028"
+                "beneficio": "Cooperación específica para el desarrollo de prácticas profesionales.",
+                "fecha": "12/11/2026",
+                "logo": "LOGOS DE LA EMPRESAS/COOPERATIVA DE AHORRO Y CRÉDITO ABIERTA -SAN JOSÉ DE PUNATA SRL.jpg"
             },
             {
-                "empresa": "Datax S.R.L.",
-                "categoria": "Cooperación e Investigación",
-                "beneficio": "Actividades Académicas y de investigación conjunta.",
-                "fecha": "21/01/2028"
+                "empresa": "CIES - SALUD SEXUAL Y SAUD REPRODUCTIVA",
+                "categoria": "Salud y Prácticas",
+                "beneficio": "Cooperación específica para la realización de prácticas profesionales en el ámbito de la salud.",
+                "fecha": "25/11/2026",
+                "logo": "LOGOS DE LA EMPRESAS/CIES - SALUD SEXUAL Y SAUD REPRODUCTIVA.jpg"
             },
             {
-                "empresa": "Colegio de Profesionales en Ciencias Administrativas y Empresariales (CADEC)",
-                "categoria": "Prácticas, Cooperación e Investigación",
-                "beneficio": "Ejecutar y desarrollar actividades académicas, cursos, capacitaciones, investigación, acceso a bibliotecas, prácticas profesionales en todas las facultades y RSU.",
-                "fecha": "21/10/2028"
+                "empresa": "SOCIEDAD DE INGENIEROS DE BOLIVIA (SIB)",
+                "categoria": "Ingeniería, Prácticas y Papers",
+                "beneficio": "20% en actualización, realización de Prácticas. UPDS brinda espacio para publicación de papers académicos organizados por la SIB.",
+                "fecha": "01/12/2026",
+                "logo": "LOGOS DE LA EMPRESAS/SOCIEDAD DE INGENIEROS DE BOLIVIA (SIB).jpg"
+            },
+            {
+                "empresa": "CONSEJO DE LA MAGISTRATURA COCHABAMBA",
+                "categoria": "Prácticas Profesionales",
+                "beneficio": "Realización de Prácticas Profesionales y 20% de descuento en oferta UPDS para sus trabajadores.",
+                "fecha": "19/12/2029",
+                "logo": "LOGOS DE LA EMPRESAS/CONSEJO DE LA MAGISTRATURA COCHABAMBA.jpg"
+            },
+            {
+                "empresa": "SEMAPA",
+                "categoria": "Prácticas Profesionales",
+                "beneficio": "Cooperación institucional específica para facilitar prácticas profesionales a la comunidad UPDS.",
+                "fecha": "14/01/2029",
+                "logo": "LOGOS DE LA EMPRESAS/SEMAPA.jpg"
+            },
+            {
+                "empresa": "BANCO FIE S.A.",
+                "categoria": "Finanzas y Prácticas",
+                "beneficio": "Gestión de Prácticas Profesionales enfocadas al desarrollo del talento humano en finanzas.",
+                "fecha": "18/01/2027",
+                "logo": "LOGOS DE LA EMPRESAS/BANCO FIE -.png"
+            },
+            {
+                "empresa": "TERDEMOL S.R.L.",
+                "categoria": "Industria y Prácticas",
+                "beneficio": "Descuento del 20% en Cursos de actualización. Realización de Prácticas Profesionales. Publicación de papers académicos organizados por TERDEMOL en UPDS.",
+                "fecha": "27/01/2027",
+                "logo": "LOGOS DE LA EMPRESAS/TERDEMOL S.R.L..jpg"
+            },
+            {
+                "empresa": "PEP RUNNING",
+                "categoria": "Deporte y Bienestar",
+                "beneficio": "Descuento del 50% en productos y servicios ofertados. Acceso a becas del 20% en UPDS para su staff.",
+                "fecha": "07/02/2027",
+                "logo": "LOGOS DE LA EMPRESAS/PEP RUNNING.jpg"
+            },
+            {
+                "empresa": "COLEGIO DE INGENIEROS PETROLEROS Y ENERGIAS DE COCHABAMBA",
+                "categoria": "Prácticas y Actualización",
+                "beneficio": "20% en Cursos y prácticas profesionales. Inclusión de afiliados SIB como base de datos docente UPDS.",
+                "fecha": "18/02/2027",
+                "logo": "LOGOS DE LA EMPRESAS/COLEGIO DE INGENIEROS PETROLEROS Y ENERGIAS DE COCHABAMBA.jpg"
+            },
+            {
+                "empresa": "SERVICIO DEPARTAMENTAL DE SALUD SEDES PANDO",
+                "categoria": "Salud Pública",
+                "beneficio": "Convenio interinstitucional de cooperación y apertura de prácticas profesionales en el área de salud.",
+                "fecha": "24/04/2028",
+                "logo": "LOGOS DE LA EMPRESAS/SERVICIO DEPARTAMENTAL DE SALUD SEDES PANDO.jpg"
+            },
+            {
+                "empresa": "HOSPITAL ROBERTO GALINDO TERAN",
+                "categoria": "Salud y Prácticas",
+                "beneficio": "Desarrollo de prácticas profesionales institucionales orientadas al apoyo en salud pública.",
+                "fecha": "24/04/2028",
+                "logo": "LOGOS DE LA EMPRESAS/HOSPITAL ROBERTO GALINDO TERAN.jpg"
+            },
+            {
+                "empresa": "PRE SCHOOL PASITOS SEGUROS",
+                "categoria": "Educación y Servicios",
+                "beneficio": "40% de descuento en servicios y productos para la comunidad UPDS. Apertura para prácticas en carreras de la Facultad de Ciencias Sociales.",
+                "fecha": "13/05/2027",
+                "logo": "LOGOS DE LA EMPRESAS/PRE SCHOOL PASITOS SEGUROS.png"
+            },
+            {
+                "empresa": "EMANUEL SIE SOLUCIONES INFORMATICAS",
+                "categoria": "Tecnología y Prácticas",
+                "beneficio": "Espacios óptimos y recursos para el desarrollo de prácticas profesionales en el área tecnológica, con retroalimentación y tutoría directa.",
+                "fecha": "14/05/2027",
+                "logo": "LOGOS DE LA EMPRESAS/EMANUEL SIE SOLUCIONES INFORMATICAS.jpg"
+            },
+            {
+                "empresa": "EMBOL S.A.",
+                "categoria": "Prácticas Profesionales",
+                "beneficio": "Desarrollo integral de Prácticas Profesionales para la comunidad estudiantil de la UPDS.",
+                "fecha": "26/05/2026",
+                "logo": "LOGOS DE LA EMPRESAS/EMBOL S.A..png"
+            },
+            {
+                "empresa": "COLEGIO DE INGENIEROS COMERCIALES DE COCHABAMBA",
+                "categoria": "Actualización y Prácticas",
+                "beneficio": "Prácticas en facultades de Ingenierías, Empresariales y Jurídicas. Descuentos del 20% en actualización y carreras UPDS para colegiados.",
+                "fecha": "28/05/2027",
+                "logo": "LOGOS DE LA EMPRESAS/COLEGIO DE INGENIEROS COMERCIALES DE COCHABAMBA.jpg"
+            },
+            {
+                "empresa": "CENTRO DE CAPACITACION TECNICA PRIVADO ACB CBA S.R.L",
+                "categoria": "Capacitación y Prácticas",
+                "beneficio": "Descuento del 15% en servicios para la UPDS. Coordinación en proyectos de RSU y otorgación de espacios para prácticas.",
+                "fecha": "29/05/2027",
+                "logo": "LOGOS DE LA EMPRESAS/CENTRO DE CAPACITACION TECNICA PRIVADO ACB CBA S.R.L.jpg"
+            },
+            {
+                "empresa": "CENTRO BOLIVIANO AMERICANO CBA",
+                "categoria": "Idiomas y Prácticas",
+                "beneficio": "Descuento del 20% a toda la comunidad UPDS y espacios para prácticas profesionales. Colaboración institucional y ponencias.",
+                "fecha": "30/05/2027",
+                "logo": "LOGOS DE LA EMPRESAS/CENTRO BOLIVIANO AMERICANO CBA.jpg"
+            },
+            {
+                "empresa": "GYMNASIO ALPHA BY: FERREL",
+                "categoria": "Deporte y Servicios",
+                "beneficio": "Descuento del 50% en los servicios para estudiantes, docentes y administrativos. Apertura a prácticas y proyectos de RSU.",
+                "fecha": "04/06/2027",
+                "logo": "LOGOS DE LA EMPRESAS/GYMNASIO ALPHA BY FERREL.jpg"
+            },
+            {
+                "empresa": "LA CÁMARA MUNDIAL DE CONFERENCISTAS EXPOSITORES Y ORADORES",
+                "categoria": "Formación y Extensión",
+                "beneficio": "Acceso preferente a red internacional de conferencistas (hasta 80% dto). Asesoramiento en comunicación, neuroeducación y EdTech.",
+                "fecha": "06/06/2028",
+                "logo": ""
+            },
+            {
+                "empresa": "JCI Femenino Cochabamba",
+                "categoria": "RSU e Interacción Social",
+                "beneficio": "Actividades académicas, de Responsabilidad Social Universitaria e Interacción Social.",
+                "fecha": "01/09/2027",
+                "logo": ""
+            },
+            {
+                "empresa": "CADEC",
+                "categoria": "Academia e Investigación",
+                "beneficio": "Actividades académicas, Responsabilidad Social, Interacción comunitaria, colaboración en bibliotecas e investigación.",
+                "fecha": "21/10/2028",
+                "logo": ""
             },
             {
                 "empresa": "Colegio Médico de Cochabamba",
-                "categoria": "Investigación y Prácticas",
-                "beneficio": "Ejecución de actividades Académicas, extensión y RSU. Cooperación en ejecución de proyectos de investigación y prácticas profesionales.",
-                "fecha": "06/11/2027"
+                "categoria": "Ciencias de la Salud",
+                "beneficio": "Prácticas Profesionales y actividades Académicas de relevancia en las áreas de las Ciencias de la Salud.",
+                "fecha": "06/11/2027",
+                "logo": "LOGOS DE LA EMPRESAS/Colegio Médico de Cochabamba.jpg"
+            },
+            {
+                "empresa": "Unidad Educativa Santo Domingo Savio",
+                "categoria": "Educación y Prácticas",
+                "beneficio": "Prácticas profesionales, actividades académicas, Extensión, RSU y programas de voluntariado.",
+                "fecha": "20/10/2028",
+                "logo": "LOGOS DE LA EMPRESAS/Unidad Educativa Santo Domingo Savio.jpg"
             },
             {
                 "empresa": "Banco Nacional de Bolivia",
                 "categoria": "Prácticas Profesionales",
-                "beneficio": "Convenio para el desarrollo de prácticas profesionales y actividades académicas.",
-                "fecha": "04/11/2028"
+                "beneficio": "Gestión de Prácticas Profesionales habilitadas en todas las áreas y sucursales.",
+                "fecha": "04/11/2028",
+                "logo": "LOGOS DE LA EMPRESAS/Banco Nacional de Bolivia.jpg"
             },
             {
-                "empresa": "Compañía Papelera de Industria y Comercio Mendoza S.A. (COPELME S.A.)",
-                "categoria": "Prácticas Profesionales y RSU",
-                "beneficio": "Desarrollo de Prácticas Profesionales y actividades de Responsabilidad Social Universitaria.",
-                "fecha": "26/11/2028"
+                "empresa": "COPELME S.A.",
+                "categoria": "Industria y Prácticas",
+                "beneficio": "Ejecución de programas para Prácticas Profesionales en todas las áreas de la compañía.",
+                "fecha": "12/11/2028",
+                "logo": "LOGOS DE LA EMPRESAS/COPELME S.A..jpg"
             },
             {
-                "empresa": "Universidad Nacional de la Rioja UNLAR",
-                "categoria": "Cooperación Internacional",
-                "beneficio": "Establecer las bases para la mutua cooperación en el desarrollo de proyectos que incluyan actividades académicas y de investigación.",
-                "fecha": "13/10/2030"
+                "empresa": "Ministerio Público - Fiscalía General del Estado",
+                "categoria": "Prácticas Jurídicas y Generales",
+                "beneficio": "Desarrollo de Prácticas Profesionales habilitadas en todas las áreas pertinentes al Ministerio Público.",
+                "fecha": "05/12/2027",
+                "logo": "LOGOS DE LA EMPRESAS/Ministerio Público - Fiscalía General del Estado.jpg"
             },
             {
-                "empresa": "Gestora Pública de la Seguridad Social de Largo Plazo",
-                "categoria": "Prácticas Profesionales",
-                "beneficio": "Implementar un sistema de prácticas pre profesionales (pasantías) para estudiantes o egresados de las diferentes carreras de la UPDS.",
-                "fecha": "02/10/2030"
+                "empresa": "Datax",
+                "categoria": "Tecnología e Investigación",
+                "beneficio": "Actividades académicas, Responsabilidad Social, colaboración en bibliotecas e investigación conjunta.",
+                "fecha": "21/01/2028",
+                "logo": ""
             },
             {
-                "empresa": "JCI Femenino Cochabamba",
-                "categoria": "Cooperación y RSU",
-                "beneficio": "Actividades académicas y de RSU, con opción a prácticas profesionales e internacionales. Activaciones y trabajos de investigación.",
-                "fecha": "01/09/2027"
+                "empresa": "AEISEC",
+                "categoria": "Internacionalización",
+                "beneficio": "Actividades académicas, responsabilidad social, prácticas y voluntariados internacionales.",
+                "fecha": "26/01/2031",
+                "logo": "LOGOS DE LA EMPRESAS/AEISEC.png"
             },
             {
-                "empresa": "Alianza Vida",
-                "categoria": "Prácticas Profesionales",
-                "beneficio": "Normar institucionalmente el proceso de selección de estudiantes de la Universidad para que realicen prácticas en las reparticiones de la ALIANZA.",
-                "fecha": "09/09/2027"
-            },
-            {
-                "empresa": "Pro Mujer",
-                "categoria": "Interinstitucional",
-                "beneficio": "Señalar los lineamientos generales y compromisos que sirvan de base para los acuerdos específicos entre la UPDS y la Fundación PRO MUJER IFD.",
-                "fecha": "15/09/2028"
-            },
-            {
-                "empresa": "Gimnasio ALPHA BY TEAM FERREL",
-                "categoria": "Intercambio de Servicios",
-                "beneficio": "Descuentos exclusivos para la comunidad UPDS en servicios y productos. Posibilidad de Prácticas Profesionales.",
-                "fecha": "30/06/2027"
-            },
-            {
-                "empresa": "Cámara Mundial de Conferencistas, Expositores y Oradores",
-                "categoria": "Cooperación y Extensión",
-                "beneficio": "Actividades académicas, de extensión, investigación, talleres, cursos, seminarios internacionales y actividades de RSE/RSU.",
-                "fecha": "06/06/2028"
-            },
-            {
-                "empresa": "Pre School Pasitos Seguros",
-                "categoria": "Intercambio de Servicios y Prácticas",
-                "beneficio": "Descuento en servicios para la comunidad UPDS, así como también actividades de acción social y prácticas profesionales.",
-                "fecha": "13/05/2027"
-            },
-            {
-                "empresa": "Emanuel Sie Soluciones Informáticas",
-                "categoria": "Prácticas Profesionales",
-                "beneficio": "Enfocado en prácticas profesionales, actividades de Extensión, RSU e investigación conjunta.",
-                "fecha": "14/05/2027"
-            },
-            {
-                "empresa": "Embotelladoras Bolivianas Unidas S.A. - EMBOL",
-                "categoria": "Prácticas Profesionales",
-                "beneficio": "Convenio institucional enfocado estrictamente en la realización de prácticas profesionales y pre profesionales.",
-                "fecha": "26/05/2026"
-            },
-            {
-                "empresa": "Colegio de Ingenieros Comerciales de Cochabamba",
-                "categoria": "Prácticas, Cooperación y RSU",
-                "beneficio": "Convenio Marco de cooperación para la ejecución de actividades académicas, prácticas profesionales, investigación y RSU.",
-                "fecha": "28/05/2027"
-            },
-            {
-                "empresa": "Centro Boliviano Americano - CBA",
-                "categoria": "Intercambio de Servicios y Becas",
-                "beneficio": "Convenio enfocado en descuento y difusión de la enseñanza del idioma inglés, actividades académicas, prácticas y extensión.",
-                "fecha": "30/06/2027"
-            },
-            {
-                "empresa": "Servicio Departamental de Salud Pando",
-                "categoria": "Cooperación en Salud",
-                "beneficio": "Fomentar las actividades académicas de los estudiantes de medicina y realizar proyectos de investigación conjunta.",
-                "fecha": "24/04/2028"
-            },
-            {
-                "empresa": "Hospital Boliviano Japonés Dr. Roberto Galindo Terán",
-                "categoria": "Prácticas Profesionales en Salud",
-                "beneficio": "Establecer lazos de cooperación para la divulgación, capacitación e investigación. Facilitar prácticas profesionales de los estudiantes.",
-                "fecha": "24/04/2028"
-            },
-            {
-                "empresa": "Servicio Municipal de Agua Potable y Alcantarillado - SEMAPA",
-                "categoria": "Prácticas Profesionales y Cooperación",
-                "beneficio": "Convenio marco de cooperación para la formación práctica, fortalecimiento institucional, interacción social e investigación.",
-                "fecha": "14/01/2029"
-            },
-            {
-                "empresa": "Banco para el Fomento a Iniciativas Económicas S.A. (Banco FIE)",
-                "categoria": "Prácticas Profesionales",
-                "beneficio": "Desarrollo de Prácticas profesionales e implementación del programa de extensión universitaria.",
-                "fecha": "18/01/2027"
-            },
-            {
-                "empresa": "PEP Running",
-                "categoria": "Intercambio de Servicios",
-                "beneficio": "Beneficio para la Comunidad UPDS en servicios y productos de la empresa. Deportes, asesoramiento y organización de carreras fitness.",
-                "fecha": "07/02/2027"
-            },
-            {
-                "empresa": "Colegio de Ingenieros Petroleros y de Energías",
-                "categoria": "Prácticas Profesionales e Investigación",
-                "beneficio": "Mutua cooperación para el desarrollo de proyectos académicos. Realizar investigaciones y prácticas en energías renovables.",
-                "fecha": "18/02/2027"
-            },
-            {
-                "empresa": "Consejo de la Magistratura Cochabamba",
-                "categoria": "Prácticas Profesionales y Becas",
-                "beneficio": "Planificación y desarrollo de actividades académicas, acción social, descuentos, prácticas profesionales e investigación.",
-                "fecha": "19/12/2029"
-            },
-            {
-                "empresa": "Cámara de Industria, Comercio y Servicios de Cochabamba (ICAM)",
-                "categoria": "Cooperación y Prácticas",
-                "beneficio": "Mutua cooperación para la ejecución y planificación de actividades de RSE, seminarios, talleres y ejecución de prácticas profesionales.",
-                "fecha": "06/06/2026"
-            },
-            {
-                "empresa": "Colegio Departamental de Economistas de Cochabamba",
-                "categoria": "Prácticas Profesionales y Cooperación",
-                "beneficio": "Desarrollo y ejecución de proyectos académicos, actividades de RSE, programas en ciencias económicas y prácticas profesionales.",
-                "fecha": "15/07/2026"
-            },
-            {
-                "empresa": "Clínica Copacabana S.R.L.",
-                "categoria": "Cooperación Institucional",
-                "beneficio": "Mutua Cooperación para actividades de RSE, formación académica, prácticas profesionales, seminarios y talleres en ciencias de la salud.",
-                "fecha": "11/07/2026"
-            },
-            {
-                "empresa": "Nuevatel",
-                "categoria": "Prácticas Profesionales",
-                "beneficio": "Implementar las Prácticas Profesionales, Modalidades de Graduación, objetivos y metas a lograr de manera conjunta.",
-                "fecha": "Indefinido"
-            },
-            {
-                "empresa": "Impuestos Nacionales",
-                "categoria": "Interinstitucional",
-                "beneficio": "Convenio marco de colaboración interinstitucional mutua para beneficio de la comunidad universitaria.",
-                "fecha": "Indefinido"
-            },
-            {
-                "empresa": "Instituto Boliviano de Normalización y Calidad (IBNORCA)",
-                "categoria": "Investigación",
-                "beneficio": "Otorgar el Acceso gratuito de la IBNOTECA a la Universidad para el uso y aplicación de normas técnicas entre sus docentes y estudiantes.",
-                "fecha": "31/12/2024"
+                "empresa": "Industrias LURI S.R.L.",
+                "categoria": "Industria y Prácticas",
+                "beneficio": "Apertura institucional para Prácticas Profesionales en todas las áreas corporativas.",
+                "fecha": "18/03/2029",
+                "logo": "LOGOS DE LA EMPRESAS/Industrias LURI S.R.L.-.jpg"
             }
         ];
 
         const contenedor = document.getElementById('conveniosContainer');
 
-        // Renderizado de las tarjetas con truncamiento de texto
         function renderizarTarjetas(datos) {
             contenedor.innerHTML = '';
             
@@ -451,39 +567,47 @@
                 contenedor.innerHTML = `
                     <div class="no-results">
                         <i class="fa-solid fa-folder-open"></i>
-                        <h2>No encontramos lo que buscas</h2>
-                        <p>Intenta usar otras palabras clave como "Prácticas", "Salud" o el nombre de una empresa.</p>
+                        <h2>No encontramos convenios bajo ese criterio</h2>
+                        <p>Intente utilizar otras palabras clave.</p>
                     </div>`;
                 return;
             }
 
             datos.forEach(item => {
-                const limiteCaracteres = 100;
+                const limiteCaracteres = 110;
                 let textoMostrar = item.beneficio;
                 let botonHtml = '';
 
-                // Lógica del botón "Ver más"
                 if (item.beneficio.length > limiteCaracteres) {
                     textoMostrar = item.beneficio.substring(0, limiteCaracteres) + '...';
                     
                     const tCompleto = item.beneficio.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
                     const tCorto = textoMostrar.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
                     
-                    botonHtml = `<span class="leer-mas" onclick="alternarTexto(this, '${tCompleto}', '${tCorto}')">Ver más <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i></span>`;
+                    botonHtml = `<span class="leer-mas" onclick="alternarTexto(this, '${tCompleto}', '${tCorto}')">Ver detalle <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i></span>`;
                 }
 
-                // Validación de fechas
                 let textoFecha = item.fecha;
                 let iconoFecha = "fa-calendar-check";
                 if(textoFecha.includes("Indefinido")) {
                     iconoFecha = "fa-infinity";
-                    textoFecha = "Vigencia Indefinida";
+                    textoFecha = "Vigencia Institucional Indefinida";
                 } else {
                     textoFecha = "Válido hasta: " + textoFecha;
                 }
 
+                // Lógica de Renderizado del Logotipo
+                let logoHtml = '';
+                if (item.logo && item.logo !== "") {
+                    logoHtml = `
+                    <div class="card-logo">
+                        <img src="${item.logo}" alt="Logotipo ${item.empresa}" loading="lazy">
+                    </div>`;
+                }
+
                 const tarjeta = `
                     <div class="card">
+                        ${logoHtml}
                         <h3 class="card-title">${item.empresa}</h3>
                         <span class="card-category">${item.categoria}</span>
                         
@@ -502,20 +626,18 @@
             });
         }
 
-        // Lógica de expandir texto
         function alternarTexto(btn, textoCompleto, textoCorto) {
             const parrafo = btn.previousElementSibling;
             
-            if (btn.innerText.includes('Ver más')) {
+            if (btn.innerText.includes('Ver detalle')) {
                 parrafo.innerText = textoCompleto;
-                btn.innerHTML = 'Ver menos <i class="fa-solid fa-chevron-up" style="font-size: 10px; margin-left: 3px;"></i>';
+                btn.innerHTML = 'Ocultar detalle <i class="fa-solid fa-chevron-up" style="font-size: 10px; margin-left: 3px;"></i>';
             } else {
                 parrafo.innerText = textoCorto;
-                btn.innerHTML = 'Ver más <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i>';
+                btn.innerHTML = 'Ver detalle <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i>';
             }
         }
 
-        // Motor de búsqueda en tiempo real
         function filtrarDatos() {
             const textoBuscado = document.getElementById('searchInput').value.toLowerCase();
             
