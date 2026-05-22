@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directorio de Convenios UPDS - Cochabamba</title>
+    
+    <link rel="icon" type="image/png" href="Logo.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,6 +22,7 @@
             --text-dark: #2d3748;
             --text-gray: #4a5568;
             --border-color: #e2e8f0;
+            --warning: #e53e3e;
         }
 
         body {
@@ -41,11 +45,9 @@
         .header img {
             height: 120px;
             width: auto;
-            background: var(--white);
-            padding: 15px 30px;
-            border-radius: 16px;
+            /* Se eliminó el fondo blanco para aprovechar el Logo.png transparente/blanco */
+            padding: 10px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             object-fit: contain;
         }
 
@@ -64,12 +66,22 @@
             opacity: 0.85;
         }
 
-        .search-container {
-            max-width: 700px;
+        /* --- BOTÓN LLAMATIVO Y BUSCADOR --- */
+        .controls-container {
+            max-width: 800px;
             margin: -35px auto 40px auto;
             padding: 0 20px;
             position: relative;
             z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .search-box-wrapper {
+            width: 100%;
+            position: relative;
         }
 
         .search-box {
@@ -94,13 +106,45 @@
 
         .search-icon {
             position: absolute;
-            left: 45px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--accent);
             font-size: 20px;
         }
 
+        .btn-action {
+            background-color: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(36, 156, 221, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-action:hover {
+            background-color: #1b84bd;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(36, 156, 221, 0.4);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(36, 156, 221, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(36, 156, 221, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(36, 156, 221, 0); }
+        }
+
+        /* --- TARJETAS --- */
         .grid-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -127,7 +171,6 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
 
-        /* Contenedor nuevo para el Logotipo */
         .card-logo {
             height: 60px;
             margin-bottom: 20px;
@@ -186,12 +229,6 @@
             font-size: 13px;
             display: inline-block;
             margin-top: 8px;
-            transition: color 0.2s;
-        }
-
-        .leer-mas:hover {
-            color: var(--primary);
-            text-decoration: underline;
         }
 
         .card-footer {
@@ -207,11 +244,129 @@
             color: var(--text-gray);
         }
 
-        .card-footer i {
-            color: var(--accent);
-            font-size: 16px;
+        /* --- MODAL (VENTANA EMERGENTE) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
 
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 650px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 24px;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: color 0.2s;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: var(--warning);
+        }
+
+        .modal-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            margin: 0;
+            font-size: 22px;
+            line-height: 1.3;
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-section h3 {
+            font-size: 16px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box {
+            background: #fff5f5;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 4px 8px 8px 4px;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .info-list {
+            padding-left: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .btn-link:hover {
+            background: var(--secondary);
+        }
+        
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
@@ -219,33 +374,98 @@
             color: var(--text-gray);
             font-family: 'Montserrat', sans-serif;
         }
-        
-        .no-results i {
-            font-size: 40px;
-            color: #cbd5e0;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <img src="https://i.imgur.com/K98aGUI.png" alt="Logo UPDS">
+        <img src="Logo.png" alt="Logo UPDS">
         <h1>Directorio de Convenios Institucionales</h1>
         <p>Beneficios exclusivos para la comunidad UPDS Sede Cochabamba</p>
     </header>
 
-    <div class="search-container">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="searchInput" class="search-box" placeholder="Busca por institución, rubro o beneficio..." onkeyup="filtrarDatos()">
+    <div class="controls-container">
+        <button class="btn-action" onclick="openModal()">
+            <i class="fa-solid fa-clipboard-check"></i> Requisitos de Prácticas Profesionales
+        </button>
+        
+        <div class="search-box-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="searchInput" class="search-box" placeholder="Busca por institución, rubro o beneficio..." onkeyup="filtrarDatos()">
+        </div>
     </div>
 
     <div class="grid-container" id="conveniosContainer">
     </div>
 
+    <div class="modal-overlay" id="practicasModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="modal-header">
+                <h2>🏛️ Formulario de Registro de Solicitud para Inicio de Práctica Profesional</h2>
+            </div>
+            
+            <div class="info-section">
+                <p><strong>Detalle:</strong> Formulario de solicitud para iniciar la práctica profesional.</p>
+                <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=ODAmzxzx0kmRg1VqNLdH4hmGcY6-WPFDgFvh3xlkNBpUMEpZVVNKQ0FRQU82TDJBRExOTjFRUVJIUC4u" target="_blank" class="btn-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Acceder al Formulario
+                </a>
+            </div>
+
+            <div class="info-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> ACLARACIÓN IMPORTANTE:</strong><br><br>
+                Tras completar el formulario, <strong>NO debes enviar ningún correo</strong>. El encargado verificará que cumplas con los requisitos y se comunicará contigo mediante el correo institucional (<a href="mailto:practicas.profesionales.cb@upds.edu.bo">practicas.profesionales.cb@upds.edu.bo</a>), enviándote los documentos que deberás presentar.<br><br>
+                El llenado de este formulario <strong>NO implica la autorización</strong> para iniciar la práctica. El inicio estará habilitado únicamente después del registro formal y la presentación de toda la documentación ante la Universidad.
+            </div>
+
+            <div class="info-section">
+                <h3><i class="fa-solid fa-list-check"></i> Requisitos y Restricciones</h3>
+                <ul class="info-list">
+                    <li>Debes haber aprobado <strong>TODAS las materias</strong> hasta el 5to semestre de tu carrera.</li>
+                    <li>No se puede registrar dos materias y una práctica profesional en el mismo módulo.</li>
+                    <li>Las prácticas de 8 horas solo aplican para la modalidad Semipresencial y el turno Noche de la modalidad Presencial.</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h3><i class="fa-solid fa-file-signature"></i> Directrices del Proceso</h3>
+                <ol class="info-list">
+                    <li><strong>Tiempo límite:</strong> Tienes 5 días hábiles (sin contar feriados) posteriores a la emisión del formulario FVW-23 para presentarlo llenado y sellado por la empresa. De lo contrario, deberás reiniciar todo el proceso.</li>
+                    <li><strong>Carta de Compromiso:</strong> Completar y presentar 2 ejemplares firmados junto con los formularios.</li>
+                    <li><strong>Validación:</strong> Presentar los documentos firmados y sellados en Jefatura de Carrera. <em>(Horarios: Lunes a viernes: 10:00 a 12:00 / 16:00 a 18:30 | Sábados: 08:30 a 12:00 / 15:00 a 17:30)</em>.</li>
+                    <li><strong>Pago y Registro:</strong> Cancelar Bs. 590 en Ventanillas de Cajas (no aplican becas ni beneficios). Posteriormente, pasar por Registros para oficializar la práctica.</li>
+                    <li><strong>Nota de entrega:</strong> La entrega debe realizarse estrictamente en horas libres. Está prohibido solicitar permiso al docente para este trámite.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ==========================================
-        // BASE DE DATOS JSON INCRUSTADA (Actualizada 2026 - Solo Vigentes)
+        // LÓGICA DEL MODAL
+        // ==========================================
+        const modal = document.getElementById('practicasModal');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Cierra el modal si se hace clic fuera del contenido
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // ==========================================
+        // BASE DE DATOS JSON (Convenios Vigentes)
         // ==========================================
         const convenios = [
             {
@@ -596,7 +816,6 @@
                     textoFecha = "Válido hasta: " + textoFecha;
                 }
 
-                // Lógica de Renderizado del Logotipo
                 let logoHtml = '';
                 if (item.logo && item.logo !== "") {
                     logoHtml = `
